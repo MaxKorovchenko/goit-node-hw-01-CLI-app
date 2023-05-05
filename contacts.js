@@ -16,14 +16,12 @@ const getContactById = async contactId => {
   return contact || null;
 };
 
-const addContact = async (name, email, phone) => {
+const addContact = async data => {
   const contacts = await getAllContacts();
 
   const newContact = {
     id: nanoid(),
-    name,
-    email,
-    phone: String(phone),
+    ...data,
   };
   contacts.push(newContact);
 
